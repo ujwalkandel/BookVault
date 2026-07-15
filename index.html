@@ -68,69 +68,120 @@
                     <div class="card-badge">Classic</div>
                     <h3>The Great Gatsby</h3>
                     <p>A classic novel by F. Scott Fitzgerald.</p>
-                    <button class="btn btn-sm card-rent-btn" onclick="requireAuth()">Rent Now</button>
                 </div>
                 <div class="card">
                     <div class="card-badge">Dystopia</div>
                     <h3>1984</h3>
                     <p>A dystopian masterpiece by George Orwell.</p>
-                    <button class="btn btn-sm card-rent-btn" onclick="requireAuth()">Rent Now</button>
                 </div>
                 <div class="card">
                     <div class="card-badge">Drama</div>
                     <h3>To Kill a Mockingbird</h3>
                     <p>A powerful story by Harper Lee.</p>
-                    <button class="btn btn-sm card-rent-btn" onclick="requireAuth()">Rent Now</button>
                 </div>
+                <div class="card">
+                    <div class="card-badge">Sci-Fi</div>
+                    <h3>Frankenstein</h3>
+                     <p>A haunting gothic story by Mary Shelley.</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Fantasy</div>
+                    <h3>Harry Potter and the Philosopher's Stone</h3>
+                    <p>A powerful story by J.K. Rowling.</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Fantasy</div>
+                    <h3>A Game of Thrones</h3>
+                    <p>A powerful story by George R.R. Martin.</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Fantasy</div>
+                    <h3>The Name of the Wind</h3>
+                    <p>A powerful story by Patrick Rothfuss.</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Mystery</div>
+                    <h3>Gone Girl</h3>
+                    <p>A powerful story by Gillian Flynn.</p>
+            </div>
             </div>
         </section>
 
 
         <section id="genres" class="section light">
-            <h2>Genres</h2>
+            <h2>Genres Available</h2>
             <div class="card-container">
+                <div class="card"><h3>Classic</h3></div>
+                <div class="card"><h3>Dystopia</h3></div>
+                <div class="card"><h3>Drama</h3></div>
                 <div class="card"><h3>Fiction</h3></div>
+                <div class="card"><h3>Sci-Fi</h3></div>
+                <div class="card"><h3>Fantasy</h3></div>
                 <div class="card"><h3>Mystery</h3></div>
-                <div class="card"><h3>Science Fiction</h3></div>
-                <div class="card"><h3>Biography</h3></div>
+                <div class="card"><h3>Non-Fiction</h3></div>
             </div>
         </section>
 
 
         <section id="gallery" class="section">
             <h2>Gallery</h2>
+            <div class="slider" id="slider">
+            <div class="slides">
+                <img src="assets/amiltoone.jpeg" alt="Amiltoone" class="slide active">
+                <img src="assets/memory.jpg" alt="Memory" class="slide">
+                <img src="assets/paradox.webp" alt="Paradox" class="slide">
+                <img src="assets/therebirthofu.jpg" alt="The Rebirth of You" class="slide">
+            </div>
 
-        <div class="gallery">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
 
-        <div class="gallery-item">
-            <img src="assets/amiltoone.jpeg" alt="Amiltoone">
-        </div>
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
 
-        <div class="gallery-item">
-            <img src="assets/memory.jpg" alt="Memory">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/paradox.webp" alt="Paradox">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/therebirthofu.jpg" alt="The Rebirth of You">
-        </div>
-
-        </div>
+            </div>
         </section>
 
 
-        <section id="contact" class="section light">
+       <section id="contact" class="section light">
+            <div class="contact-split-container">
+            <div class="form-side">
             <h2>Contact Us</h2>
             <form class="contact-form" onsubmit="handleContact(event)">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message"></textarea>
-                <button type="submit">Send Message</button>
+                <div class="form-group">
+                    <label for="contact-name">Full Name</label>
+                    <input type="text" id="contact-name" placeholder="e.g. John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-email">Email Address</label>
+                    <input type="email" id="contact-email" placeholder="e.g. john@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message">Your Message</label>
+                    <textarea id="contact-message" rows="5" placeholder="Type your message here..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
             </form>
-        </section>
+        </div>
+
+
+        <div class="map-side">
+            <h2>Find Us Here!</h2>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112999.10324712875!2d85.19521121640622!3d27.74129860000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f2c3a8c0fd%3A0x7e31a793d1947efd!2sMalpi%20International%20College!5e0!3m2!1sen!2snp!4v1784111963829!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 
         <footer>
             <p>&copy; 2026 BookVault. All Rights Reserved.</p>
@@ -191,7 +242,7 @@
         </div>
     </div>
 
-    <div id="toast" class="toast" style="display:none;"></div>
+
 
     <script src="js/shared.js"></script>
     <script src="js/auth.js"></script>

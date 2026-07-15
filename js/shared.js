@@ -99,7 +99,33 @@ function daysSince(dateStr) {
 
 
 function showToast(msg, type = "success") {
-    const t = document.getElementById("toast");
+    let t = document.getElementById("toast");
+    if (!t) {
+        t = document.createElement("div");
+        t.id = "toast";
+        document.body.appendChild(t);
+    }
+    
+    // Inject CSS if not present
+    if (!document.getElementById("toast-style")) {
+        const style = document.createElement("style");
+        style.id = "toast-style";
+        style.textContent = `
+        .toast {
+            position: fixed; bottom: 28px; right: 28px;
+            padding: 13px 20px; border-radius: 10px;
+            font-size: 14px; font-weight: 500;
+            z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            animation: toastIn 0.3s ease; max-width: 320px;
+        }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        .toast-success { background: #1e293b; color: #fff; }
+        .toast-info    { background: #374151; color: #fff; }
+        .toast-error   { background: #dc2626; color: #fff; }
+        `;
+        document.head.appendChild(style);
+    }
+    
     t.textContent = msg;
     t.className = "toast toast-" + type;
     t.style.display = "block";
@@ -107,6 +133,12 @@ function showToast(msg, type = "success") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const pendingToast = sessionStorage.getItem("pendingToast");
+    if (pendingToast) {
+        const parts = pendingToast.split("|");
+        showToast(parts[0], parts[1] || "success");
+        sessionStorage.removeItem("pendingToast");
+    }
 
     const user = getCurrentUser();
 

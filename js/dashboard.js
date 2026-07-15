@@ -1,10 +1,4 @@
-function showDashboard() {
-    window.location.href = "dashboard.html";
-}
 
-function goToMainSite() {
-    window.location.href = "index.html";
-}
 
 function switchTab(el, tabName) {
     if (el) {
@@ -239,16 +233,6 @@ function deleteAccount() {
     const users = getUsers().filter(u => u.email !== email);
     saveUsers(users);
     localStorage.removeItem("bv_session");
-    document.getElementById("guestButtons").style.display = "flex";
-    document.getElementById("userMenu").style.display     = "none";
-    goToMainSite();
-    showToast("Account deleted.", "info");
-}
-
-function logout() {
-    localStorage.removeItem("bv_session");
-    document.getElementById("guestButtons").style.display = "flex";
-    document.getElementById("userMenu").style.display     = "none";
-    goToMainSite();
-    showToast("Signed out.", "info");
+    sessionStorage.setItem("pendingToast", "Account deleted.|info");
+    window.location.href = "index.html";
 }

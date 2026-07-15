@@ -67,8 +67,8 @@ function handleRegister() {
     localStorage.setItem("bv_session", email);
 
     closeAuth();
+    sessionStorage.setItem("pendingToast", "Welcome to BookVault, " + name.split(" ")[0] + "! 🎉|success");
     onLoginSuccess();
-    showToast("Welcome to BookVault, " + name.split(" ")[0] + "! 🎉");
 }
 
 
@@ -88,27 +88,24 @@ function handleLogin() {
 
     localStorage.setItem("bv_session", email);
     closeAuth();
+    sessionStorage.setItem("pendingToast", "Welcome back, " + user.name.split(" ")[0] + "!|success");
     onLoginSuccess();
-    showToast("Welcome back, " + user.name.split(" ")[0] + "!");
 }
 
 function logout() {
     localStorage.removeItem("bv_session");
-    document.getElementById("guestButtons").style.display = "flex";
-    document.getElementById("userMenu").style.display     = "none";
-    goToMainSite();
-    showToast("Signed out.", "info");
+    if (window.location.pathname.includes("dashboard.html")) {
+        sessionStorage.setItem("pendingToast", "Signed out.|info");
+        window.location.href = "index.html";
+    } else {
+        const guestBtns = document.getElementById("guestButtons");
+        const userMenu = document.getElementById("userMenu");
+        if (guestBtns) guestBtns.style.display = "flex";
+        if (userMenu) userMenu.style.display = "none";
+        showToast("Signed out.", "info");
+    }
 }
 
 function onLoginSuccess() {
-    const user = getCurrentUser();
-    if (!user) return;
-
-    // Navbar
-    document.getElementById("guestButtons").style.display = "none";
-    document.getElementById("userMenu").style.display     = "flex";
-    document.getElementById("userNameDisplay").textContent = user.name.split(" ")[0];
-    document.getElementById("userAvatar").textContent      = user.name.charAt(0).toUpperCase();
-
-    showDashboard();
+    window.location.href = "dashboard.html";
 }
